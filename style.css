@@ -1,11 +1,14 @@
 * { box-sizing: border-box; }
-
+h1, h2, p {
+  color: #cccccc;
+}
 body {
     font-family: Arial, sans-serif;
     max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
     line-height: 1.5;
+    background-color: #222222;
 }
 
 button, input {
@@ -15,7 +18,7 @@ button, input {
 }
 
 .card {
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 8px;
     padding: 1rem;
     margin: 0.75rem 0;
@@ -29,3 +32,4 @@ nav a {
     font-weight: bold;
     margin-top: 1rem;
 }
+
