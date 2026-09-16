@@ -27,7 +27,7 @@ function resetGame() {
 }
 
 function winGame() {
-    if (score >= 12){
+    if (score >= 17){
         title.textContent = "You Win";
     }
 
