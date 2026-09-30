@@ -1,4 +1,5 @@
 let score = 0;
+const attacks = [];
 
 const scoreDisplay = document.getElementById("score");
 const title = document.getElementById("title");
@@ -26,7 +27,10 @@ function performAttack(){
   const isCritical = attackValue === 10;
   const damage = calculateDamage(attackValue, isCritical);
 
+  attacks.push(damage);
   score += damage;
+  console.log(attacks);
+
   message.innerText = '$(playerName)caused $(damage)damage.';
   updateDisplay();
 }
