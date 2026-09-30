@@ -6,6 +6,9 @@ const attackButton = document.getElementById("attackButton");
 const resetButton = document.getElementById("resetButton");
 const megaAttackButton = document.getElementById('megaAttackButton');
 const supaAttackButton = document.getElementById("supaAttackButton");
+const playerNameInput = document.getElementById("playerName")
+const attackValueInput = document.getElementById("attackValue")
+const message = document.getElementById("message")
 
 // TODO: create addPoint()
 function addPoint() {
