@@ -4,11 +4,12 @@ const scoreDisplay = document.getElementById("score");
 const title = document.getElementById("title");
 const attackButton = document.getElementById("attackButton");
 const resetButton = document.getElementById("resetButton");
-const megaAttackButton = document.getElementById('megaAttackButton')
+const megaAttackButton = document.getElementById('megaAttackButton');
+const supaAttackButton = document.getElementById("supaAttackButton");
 
 // TODO: create addPoint()
 function addPoint() {
-    score += 1;
+    score++;
     scoreDisplay.textContent = score;
     winGame()
 }
@@ -17,6 +18,12 @@ function addFivePoint() {
     score += 5;
     scoreDisplay.textContent = score;
     winGame()
+}
+
+function addTenPoint(){
+  score += 10;
+  scoreDisplay.textContent = score;
+  winGame()
 }
 
 // TODO: create resetGame()
@@ -36,4 +43,4 @@ function winGame() {
 attackButton.addEventListener('click', addPoint)
 resetButton.addEventListener('click', resetGame)
 megaAttackButton.addEventListener('click', addFivePoint)
-
+supaAttackButton.addEventListener('click', addTenPoint)

@@ -37,6 +37,10 @@ button, input {
   background-color: crimson;
 }
 
+#supaAttackButton {
+  background-color: rebeccapurple;
+}
+
 nav a {
     margin-right: 1rem;
 }
