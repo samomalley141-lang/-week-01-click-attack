@@ -7,9 +7,10 @@ const attackButton = document.getElementById("attackButton");
 const resetButton = document.getElementById("resetButton");
 //const megaAttackButton = document.getElementById('megaAttackButton');
 //const supaAttackButton = document.getElementById("supaAttackButton");
-const playerNameInput = document.getElementById("playerName")
-const attackValueInput = document.getElementById("attackValue")
-const message = document.getElementById("message")
+const playerNameInput = document.getElementById("playerName");
+const attackValueInput = document.getElementById("attackValue");
+const message = document.getElementById("message");
+const historyList = document.getElementById("history");
 
 function performAttack(){
   const playerName = playerNameInput.value.trim();
@@ -27,11 +28,11 @@ function performAttack(){
   const isCritical = attackValue === 10;
   const damage = calculateDamage(attackValue, isCritical);
 
-  attacks.push(damage);
   score += damage;
+  attacks.push(damage);
   console.log(attacks);
 
-  message.innerText = '$(playerName)caused $(damage)damage.';
+  message.innerText = `${playerName} caused ${damage} damage.`;
   updateDisplay();
 }
 
@@ -49,15 +50,20 @@ function performAttack(){
 
 // TODO: create resetGame()
 function resetGame() {
-    score = 0;
-    scoreDisplay.textContent = score;
-    title.textContent = "Click Attack"
+  score = 0;
+  attacks.length = 0;
+  playerNameInput.value = "";
+  attackValueInput.value = "1";
+  title.innerText = "Click Attack";
+  message.innerText = "Enter your name and choose an attack value.";
+  updateDisplay();
 }
 
-function winGame() {
-    if (score >= 17){
-        title.textContent = "You Win";
-    }
+//function winGame() {
+//  if (score >= 20) {
+//    title.textContent = "You Win";
+//  }
+//}
 
 function getAttackValue(){
   const rawValue = attackValueInput.value.trim();
@@ -81,8 +87,6 @@ function getAttackValue(){
   return attackValue;
 }
 
-}
-
 function calculateDamage(baseDamage, isCritical){
       if(isCritical){
         return baseDamage * 2;
@@ -90,9 +94,26 @@ function calculateDamage(baseDamage, isCritical){
       return baseDamage;
 }
 
-function updateDisplay(){
-  scoreDisplay.textContent = score;
-  winGame();
+function updateHistory() {
+  historyList.innerHTML = "";
+  for (let index = 0; index < attacks.length; index++) {
+    const listItem = document.createElement("li");
+    listItem.innerText =
+      `Attack ${index + 1}: ${attacks[index]} damage`;
+    historyList.appendChild(listItem);
+  }
+}
+
+function updateDisplay() {
+  scoreDisplay.innerText = score;
+  updateHistory();
+  if (score >= 20) {
+    title.innerText = "YOU WIN!";
+    attackButton.disabled = true;
+  } else {
+    title.innerText = "Click Attack";
+    attackButton.disabled = false;
+  }
 }
 
 // TODO: connect both functions to buttons
